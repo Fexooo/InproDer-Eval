@@ -2,7 +2,7 @@
 
 build:
     @echo 'Building main software...'
-    mvn package
+    mvn clean compile assembly:single
     @echo 'Successfully built main software!'
 
 compile-test:
@@ -12,7 +12,8 @@ compile-test:
 
 start:
     @echo 'Executing packaged jar...'
-    java -cp target/TestingSootUp-1.0-SNAPSHOT.jar de.felixkat.TestingSootUp.MainKt
+    java -cp target/InproDerEval-1.0-SNAPSHOT-jar-with-dependencies.jar de.felixkat.inprodereval.MainKt
     @echo 'Executed packaged jar!'
 
-run: compile-test build start
+compile-full-run: compile-test build start
+compile-eval-run: build start

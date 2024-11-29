@@ -1,4 +1,4 @@
-package de.felixkat
+package de.felixkat.inprodereval
 
 import de.felixkat.InproDer.generateDerivationTree
 import sootup.core.inputlocation.AnalysisInputLocation

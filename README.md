@@ -6,3 +6,16 @@
 ---
 
 This project contains source code to evaluate the approach used in the library InproDer and compare it to basic taint-tracking and privacy flow graph generation.
+
+---
+## Usage
+This project uses [just](http://just.systems) to keep testing and running the evaluation locally while development easy.
+You can use the following [just](http://just.systems) recipes:
+
+| Recipe | Runs recipes (in order)               | Description                                                                              |
+|--------|---------------------------------------|------------------------------------------------------------------------------------------|
+| build  | none                                  | Builds jar of evaluation software with all dependencies in target folder                 |
+| compile-test | none                            | Compiles the test HelloWorld java program located in src/test/java/example               |
+| start | none                                   | Runs built jar in target folder                                                          |
+| compile-full-run | compile-test, build, start  | Fully builds everything from scratch to run again                                        |
+| compile-eval-run | build, start                | Builds the evaluation software and runs it. It does not recompile the test java program. |
