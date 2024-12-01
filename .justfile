@@ -15,5 +15,15 @@ start:
     java -cp target/InproDerEval-1.0-SNAPSHOT-jar-with-dependencies.jar de.felixkat.inprodereval.MainKt
     @echo 'Executed packaged jar!'
 
+verify:
+    @echo 'Verifying evaluation program...'
+    mvn verify
+    @echo 'Verified evaluation program!'
+
+verify-clean:
+    @echo 'Clean verifying evaluation program...'
+    mvn verify clean
+    @echo 'Clean verified evaluation program!'
+
 compile-full-run: compile-test build start
 compile-eval-run: build start
