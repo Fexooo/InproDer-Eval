@@ -12,13 +12,15 @@ This project contains source code to evaluate the approach used in the library I
 This project uses [just](http://just.systems) to keep testing and running the evaluation locally while development easy.
 You can use the following [just](http://just.systems) recipes:
 
-| Recipe           | Runs recipes (in order)    | Description                                                                              |
-|------------------|----------------------------|------------------------------------------------------------------------------------------|
-| build            | none                       | Builds jar of evaluation software with all dependencies in target folder                 |
-| compile-test     | none                       | Compiles the test HelloWorld java program located in src/test/java/example               |
-| start            | none                       | Runs built jar in target folder                                                          |
-| verify           | none                       | Verifies build using "mvn verify" command.                                               |
-| verify-clean     | none                       | Clean verifies build using "mvn verify clean" command.                                   |
-| compile-full-run | compile-test, build, start | Fully builds everything from scratch to run again                                        |
-| compile-eval-run | build, start               | Builds the evaluation software and runs it. It does not recompile the test java program. |
+| Recipe                            | Runs recipes (in order)    | Description                                                                                                                                                                  |
+|-----------------------------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| build                             | none                       | Builds jar of evaluation software with all dependencies in target folder                                                                                                     |
+| compile-test                      | none                       | Compiles the test HelloWorld java program located in src/test/java/example                                                                                                   |
+| start                             | none                       | Runs built jar in target folder                                                                                                                                              |
+| verify                            | none                       | Verifies build using "mvn verify" command.                                                                                                                                   |
+| verify-clean                      | none                       | Clean verifies build using "mvn verify clean" command.                                                                                                                       |
+| docker-build inproder-ver version | none                       | Builds a docker image with "version" version handle and with "inproder-ver" InproDer version from m2 repository. (Tested on macOS. Make sure you installed InproDer locally) |
+| docker-run version                | none                       | Runs docker container with "version" version handle.                                                                                                                         |
+| compile-full-run                  | compile-test, build, start | Fully builds everything from scratch to run again                                                                                                                            |
+| compile-eval-run                  | build, start               | Builds the evaluation software and runs it. It does not recompile the test java program.                                                                                     |
 
