@@ -1,10 +1,12 @@
 FROM maven:3.9.9-amazoncorretto-23
 LABEL authors="felixkatzenberg"
 
+ADD .github/maven-settings.xml /
 ADD pom.xml /
-RUN mvn verify clean
+RUN mvn -s maven-settings.xml verify clean
 ADD . /
-RUN mvn compile assembly:single
+RUN mvn -s maven-settings.xml compile assembly:single
+RUN rm -f maven-settings.xml
 
 FROM openjdk:23-jdk
 WORKDIR /root/
