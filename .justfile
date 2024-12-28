@@ -25,10 +25,8 @@ verify-clean:
     mvn verify clean
     @echo 'Clean verified evaluation program!'
 
-docker-build inproder-ver version:
-    @echo 'Building docker image version {{version}} with InproDer version {{inproder-ver}}...'
-    @echo 'Make sure InproDer is currently installed in your maven dependencies!'
-    cp ~/.m2/repository/de/felixkat/InproDer/InproDer/{{inproder-ver}}/InproDer-{{inproder-ver}}.jar temp/InproDer.jar
+docker-build version:
+    @echo 'Building docker image version {{version}}...'
     docker build -t inproder-eval:{{version}} .
     @echo 'Built docker image!'
 

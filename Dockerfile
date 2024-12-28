@@ -1,10 +1,6 @@
 FROM maven:3.9.9-amazoncorretto-23
 LABEL authors="felixkatzenberg"
 
-# Install InproDer manually
-ADD ./temp/InproDer.jar /InproDer.jar
-RUN mvn install:install-file -Dfile=InproDer.jar -DgroupId=de.felixkat.InproDer -DartifactId=InproDer -Dversion=1.0-SNAPSHOT -Dpackaging=jar
-
 ADD pom.xml /
 RUN mvn verify clean
 ADD . /
