@@ -19,4 +19,4 @@ jobs:
     - name: ⚒️ Build the Docker image
       run: docker build --build-arg USER_NAME=${{ secrets.USER_NAME }} --build-arg ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }} . --file Dockerfile --tag inproder-eval:latest
     - name: ☁️ Upload the Docker image
-      run: docker tag inproder-eva:latest  ghcr.io/${{ secrets.REPO_USER }}/inproder-eval:latest
+      run: docker tag inproder-eval:latest  ghcr.io/${{ secrets.REPO_USER }}/inproder-eval:latest
