@@ -1,11 +1,13 @@
 FROM maven:3.9.9-amazoncorretto-23
 LABEL authors="felixkatzenberg"
 
-ADD .github/maven-settings.xml /
+ADD .github/workflows/maven-settings.xml /
 ADD pom.xml /
-RUN mvn -s maven-settings.xml verify clean
+ARG USER_NAME
+ARG ACCESS_TOKEN
+RUN mvn -s maven-settings.xml verify clean -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
 ADD . /
-RUN mvn -s maven-settings.xml compile assembly:single
+RUN mvn -s maven-settings.xml compile assembly:single -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
 RUN rm -f maven-settings.xml
 
 FROM openjdk:23-jdk

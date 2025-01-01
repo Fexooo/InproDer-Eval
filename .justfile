@@ -25,9 +25,9 @@ verify-clean:
     mvn verify clean
     @echo 'Clean verified evaluation program!'
 
-docker-build version:
+docker-build version user token:
     @echo 'Building docker image version {{version}}...'
-    docker build -t inproder-eval:{{version}} .
+    docker build --build-arg USER_NAME={{user}} --build-arg ACCESS_TOKEN={{token}} -t inproder-eval:{{version}} .
     @echo 'Built docker image!'
 
 docker-run version:
