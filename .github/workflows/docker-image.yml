@@ -18,5 +18,7 @@ jobs:
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io --username ${{ secrets.USER_NAME }} --password-stdin
     - name: ⚒️ Build the Docker image
       run: docker build --build-arg USER_NAME=${{ secrets.USER_NAME }} --build-arg ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }} . --file Dockerfile --tag inproder-eval:latest
-    - name: ☁️ Upload the Docker image
-      run: docker tag inproder-eval:latest  ghcr.io/${{ secrets.REPO_USER }}/inproder-eval:latest
+    - name: ❞ Tag the Docker image
+      run: docker tag inproder-eval:latest ghcr.io/${{ secrets.REPO_USER }}/inproder-eval:latest
+    - name: 📤 Push Docker image
+      run: docker push ghcr.io/${{ secrets.REPO_USER }}/inproder-eval:latest
