@@ -1,7 +1,7 @@
 package de.felixkat.inprodereval
 
-import de.felixkat.InproDer.generateDerivationTree
-import de.felixkat.InproDer.generatePrivacyFlowGraph
+import de.felixkat.InproDer.derivationtrees.generateDerivationTree
+import de.felixkat.InproDer.privacyflowgraphs.generatePrivacyFlowGraph
 import sootup.core.inputlocation.AnalysisInputLocation
 import sootup.core.model.SootClass
 import sootup.core.model.SootMethod
