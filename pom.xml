@@ -146,7 +146,7 @@
         <dependency>
             <groupId>de.felixkat.InproDer</groupId>
             <artifactId>InproDer</artifactId>
-            <version>0.1</version>
+            <version>0.2</version>
         </dependency>
     </dependencies>
 

@@ -1,6 +1,8 @@
 package de.felixkat.inprodereval
 
+import de.felixkat.InproDer.derivationtrees.exporter.exportAsDotGraph
 import de.felixkat.InproDer.derivationtrees.generateDerivationTree
+import de.felixkat.InproDer.privacyflowgraphs.exporter.exportAsDotGraph
 import de.felixkat.InproDer.privacyflowgraphs.generatePrivacyFlowGraph
 import sootup.core.inputlocation.AnalysisInputLocation
 import sootup.core.model.SootClass
@@ -50,6 +52,9 @@ fun main() {
     println(tree.exportAsDotGraph())
     println(DotExporter.createUrlToWebeditor(sootMethod.body.stmtGraph))
 
-    generatePrivacyFlowGraph(view)
+    var graphs = generatePrivacyFlowGraph(view)
+    graphs.forEach { graph ->
+        println(graph.exportAsDotGraph())
+    }
 
 }
