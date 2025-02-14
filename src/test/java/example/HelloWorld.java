@@ -22,7 +22,11 @@ class HelloWorld {
         String email = name + "@gmail.com";
         String returnMail = email + "\n";
         String test = name + "2";
-        test(test);
+        try {
+            test(test);
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
         return returnMail;
     }
 
