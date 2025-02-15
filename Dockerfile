@@ -16,6 +16,8 @@ ADD pom.xml /
 ARG USER_NAME
 ARG ACCESS_TOKEN
 RUN mvn -s maven-settings.xml verify clean -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
+RUN mvn -s maven-settings.xml clean package -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
+RUN ls -lh target/
 ADD . /
 RUN mvn -s maven-settings.xml clean compile assembly:single -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
 RUN rm -f maven-settings.xml
@@ -26,6 +28,7 @@ WORKDIR /root/
 RUN mkdir temp
 RUN mkdir results
 
+COPY --from=0 /target/*.jar app.bak.jar
 COPY --from=0 /target/*-jar-with-dependencies.jar app.jar
 ADD src/test src/test
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","./app.jar","--output","temp/"]
