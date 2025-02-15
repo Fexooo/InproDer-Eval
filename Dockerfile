@@ -1,4 +1,4 @@
-FROM maven:3.9.9-amazoncorretto-23
+FROM maven:3.9.9-amazoncorretto-21
 LABEL authors="felixkatzenberg"
 
 RUN mkdir build
@@ -24,7 +24,7 @@ RUN ls -lh src/main/kotlin
 RUN rm -f maven-settings.xml
 RUN rm -rf marin
 
-FROM openjdk:23-jdk
+FROM openjdk:21-jdk
 WORKDIR /root/
 RUN mkdir temp
 RUN mkdir results
