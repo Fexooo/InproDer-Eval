@@ -17,7 +17,7 @@ ARG USER_NAME
 ARG ACCESS_TOKEN
 RUN mvn -s maven-settings.xml verify clean -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
 ADD . /
-RUN mvn -s maven-settings.xml compile assembly:single -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
+RUN mvn -s maven-settings.xml clean compile assembly:single -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
 RUN rm -f maven-settings.xml
 RUN rm -rf marin
 
