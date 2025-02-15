@@ -12,15 +12,11 @@ RUN mvn install:install-file \
            -DpomFile=marin-pom.xml
 RUN rm -f marin-1.0.0-SNAPSHOT.jar
 ADD .github/workflows/maven-settings.xml /
-ADD pom.xml /
+ADD . /
 ARG USER_NAME
 ARG ACCESS_TOKEN
 RUN mvn -s maven-settings.xml verify clean -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
 RUN mvn -s maven-settings.xml clean package -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
-RUN ls -lh target/
-RUN ls -lh target/classes/
-ADD . /
-RUN ls -lh
 RUN mvn -s maven-settings.xml clean compile assembly:single -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
 RUN rm -f maven-settings.xml
 RUN rm -rf marin
