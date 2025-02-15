@@ -20,6 +20,7 @@ RUN mvn -s maven-settings.xml clean package -Denv.user=${USER_NAME} -Denv.access
 RUN ls -lh target/
 RUN ls -lh target/classes/
 ADD . /
+RUN ls -lh
 RUN mvn -s maven-settings.xml clean compile assembly:single -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
 RUN rm -f maven-settings.xml
 RUN rm -rf marin
