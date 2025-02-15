@@ -1,6 +1,8 @@
 FROM maven:3.9.9-amazoncorretto-23
 LABEL authors="felixkatzenberg"
 
+RUN mkdir build
+WORKDIR /build
 ADD dependencies/marin-1.0.0-SNAPSHOT.jar /
 ADD dependencies/marin-pom.xml /
 RUN mvn install:install-file \
@@ -16,9 +18,9 @@ ADD . /
 ARG USER_NAME
 ARG ACCESS_TOKEN
 RUN mvn -s maven-settings.xml verify clean -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
-RUN mvn -s maven-settings.xml clean package -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
-RUN ls -lh
 RUN mvn -s maven-settings.xml clean compile assembly:single -Denv.user=${USER_NAME} -Denv.accesstoken=${ACCESS_TOKEN}
+RUN ls -lh
+RUN ls -lh src/main/kotlin
 RUN rm -f maven-settings.xml
 RUN rm -rf marin
 
