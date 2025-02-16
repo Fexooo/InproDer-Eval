@@ -29,4 +29,4 @@ RUN mkdir results
 
 COPY --from=0 /build/target/*-jar-with-dependencies.jar app.jar
 ADD src/test src/test
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","./app.jar","--output","temp/"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xms512m","-Xmx6144m","-jar","./app.jar","--output","temp/"]
