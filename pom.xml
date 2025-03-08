@@ -183,7 +183,7 @@
         <dependency>
             <groupId>de.felixkat.InproDer</groupId>
             <artifactId>InproDer</artifactId>
-            <version>0.3</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>org.tudo.sse</groupId>

@@ -5,10 +5,26 @@
 
 ---
 
-This project contains source code to evaluate the approach used in the library InproDer and compare it to basic taint-tracking and privacy flow graph generation.
+## What is it doing?
+
+This project contains source code to evaluate the approach used in the library InproDer and compare the privacy flow graph generation and the derivation tree generation itself.
 
 ---
-## Usage
+## Docker Usage
+
+Run the docker container for easy evaluation.
+The container will run the evaluation software and generate the results.
+In order to extract the results and, if some happen, errors from the container, you can use the following command:
+
+```bash
+docker run -d -v /path/to/results/on/host:/root/results -v /path/to/errors/on/host:/root/errors --name eval ghcr.io/fexooo/inproder-eval:latest -st 0:10000
+```
+Change the `/path/to/results/on/host` and `/path/to/errors/on/host` to the desired paths to folders on your host machine.
+Using `-st 0:10000` defines how many artifacts will be downloaded and evaluated (in this case 10000 artifacts) from the Maven Central Repository.
+
+---
+## Development Usage
+
 This project uses [just](http://just.systems) to keep testing and running the evaluation locally while development easy.
 You can use the following [just](http://just.systems) recipes:
 
